@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "ABF2B3272AD8ABD86E0E706DB5895D42AB6A867C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "6BC574A513AD6336EAB945CA9BFA761FC97605AC" : 0,
+    "ABF2B3272AD8ABD86E0E706DB5895D42AB6A867C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3BBB02F5-5AFF-4339-BB9D-27D49434E418",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "6BC574A513AD6336EAB945CA9BFA761FC97605AC" : "",
+    "ABF2B3272AD8ABD86E0E706DB5895D42AB6A867C" : "Jiandan\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Jiandan",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Jiandan.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:nulitype\/StudentSystem.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6BC574A513AD6336EAB945CA9BFA761FC97605AC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nulitype\/-.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ABF2B3272AD8ABD86E0E706DB5895D42AB6A867C"
+    }
+  ]
+}

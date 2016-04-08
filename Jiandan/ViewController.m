@@ -120,7 +120,7 @@
     
     [self getCurrentPage];
     
-    NSLog(@"%d",_currentPage);
+    NSLog(@"%ld",(long)_currentPage);
     
     NSURL *MeiziPhotosUrl = [NSURL URLWithString:@"http://jandan.net/ooxx"];
     NSMutableArray *MeiziUrlArray = [self requestPhotosWithUrl:MeiziPhotosUrl];
