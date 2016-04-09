@@ -10,6 +10,7 @@ target 'Jiandan' do
 	pod 'UIActivityIndicator-for-SDWebImage'
 	pod 'MJRefresh'
 	pod 'MJExtension'
+	pod 'SVProgressHUD'
 	
 
 end

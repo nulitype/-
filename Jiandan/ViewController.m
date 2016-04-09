@@ -59,19 +59,6 @@
 
 #pragma mark - Refresh Methods
 
-//- (void)refreshMeizi {
-//    [self.MeiziUrl removeAllObjects];
-//    
-//    NSString *urlString = @"http://jandan.net/ooxx";
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    NSMutableArray *refreshArray = [self requestPhotosWithUrl:url];
-//    
-//    [self.MeiziUrl addObjectsFromArray:refreshArray];
-//    [self.collectionView reloadData];
-//    
-//    [self getCurrentPage];
-//    
-//}
 
 - (void)loadMore {
     _currentPage--;
