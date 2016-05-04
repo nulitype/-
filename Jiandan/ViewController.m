@@ -123,12 +123,23 @@
 
 - (NSMutableArray *)requestPhotosWithUrl:(NSURL *)url {
     NSData *MeiziPhotosData = [NSData dataWithContentsOfURL:url];
+
+    NSLog(@"data:---%@",MeiziPhotosData);
     TFHpple *MeiziParser = [TFHpple hppleWithHTMLData:MeiziPhotosData];
     
     NSString *MeiziUrlQuery = @"//div[@class='text']/p";
     NSArray *MeiziUrlNode = [MeiziParser searchWithXPathQuery:MeiziUrlQuery];
+    NSLog(@"MeizuUrlNode------%@", MeiziUrlNode);
+    if (MeiziUrlNode.count == 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请求失败" message:@"你不是被选中的蛋友" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+
     
     NSMutableArray *MeiziUrlArray = [NSMutableArray array];
+    
     
     for (TFHppleElement *element in MeiziUrlNode) {
         

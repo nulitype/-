@@ -122,6 +122,15 @@
     
     NSString *queryPath = @"//div[@class='text']/p";
     NSArray *DuanziNode = [parser searchWithXPathQuery:queryPath];
+    
+    if (DuanziNode.count == 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请求失败" message:@"你不是被选中的蛋友" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+
+    
     NSMutableArray *temp = [NSMutableArray array];
     
     for (TFHppleElement *element in DuanziNode) {
@@ -144,7 +153,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSLog(@"show %zd", indexPath.row);
     DuanziCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DuanziCell"];
 //    if (!cell) {
 //        cell = [[DuanziCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DuanziCell"];
@@ -177,16 +186,18 @@
 //    NSLog(@"h=%f", height);
 //    return 1  + height;
     //return 88;
-    
+    NSLog(@"heightforrow %zd",indexPath.row);
     DuanziCell *cell = (DuanziCell *)self.prototypeCell;
     Duanzi *duanzi = [self.duanziArray objectAtIndex:indexPath.row];
     cell.label.text = duanzi.text;
     CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     NSLog(@"h=%f", size.height + 1);
+
     return 1  + size.height;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"estimate");
     return 88;
 }
 
