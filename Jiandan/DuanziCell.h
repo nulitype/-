@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Duanzi;
+
 @interface DuanziCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel *label;
+@property (nonatomic, strong) Duanzi *duanzi;
 
 @end

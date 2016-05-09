@@ -120,7 +120,8 @@
     
     TFHpple *parser = [TFHpple hppleWithHTMLData:data];
     
-    NSString *queryPath = @"//div[@class='text']/p";
+    //NSString *queryPath = @"//div[@class='text']/p";
+    NSString *queryPath = @"//div[@class='row']";
     NSArray *DuanziNode = [parser searchWithXPathQuery:queryPath];
     
     if (DuanziNode.count == 0) {
@@ -135,9 +136,36 @@
     
     for (TFHppleElement *element in DuanziNode) {
         Duanzi *duanzi = [[Duanzi alloc] init];
-        duanzi.text = element.content;
-        NSLog(@"%@", element.content);
         [temp addObject:duanzi];
+        
+        for (TFHppleElement *child in element.children) {
+            if ([child.attributes[@"class"] isEqualToString:@"author"]) {
+                for (TFHppleElement *ch in child.children) {
+                    if ([ch.tagName isEqualToString:@"strong"]) {
+                        duanzi.name = ch.content;
+                        NSLog(@"%@", duanzi.name);
+                    }
+                    if ([ch.tagName isEqualToString:@"small"]) {
+                        duanzi.time = ch.firstChild.content;
+                        NSLog(@"%@", duanzi.time);
+                    }
+                }
+            }
+            
+        
+        //duanzi.text = element.content;
+        //NSLog(@"%@", element.content);
+        }
+        for (TFHppleElement *child in element.children) {
+            if ([child.attributes[@"class"] isEqualToString:@"text"]) {
+                for (TFHppleElement *ch in child.children) {
+                    if ([ch.tagName isEqualToString:@"p"]) {
+                        duanzi.text = ch.content;
+                        NSLog(@"%@", duanzi.text);
+                    }
+                }
+            }
+        }
     }
     return temp;
 }
@@ -155,45 +183,27 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"show %zd", indexPath.row);
     DuanziCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DuanziCell"];
-//    if (!cell) {
-//        cell = [[DuanziCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DuanziCell"];
-//    }
+
     Duanzi *duanzi = self.duanziArray[indexPath.row];
-    cell.label.text = duanzi.text;
-    //cell.label.text = @"11111";
-    [cell.label sizeToFit];
-    
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DuanziCell"];
-//    if (!cell) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DuanziCell"];
-//    }
-//    Duanzi *duanzi = self.duanziArray[indexPath.row];
-//    
-//    cell.textLabel.text = duanzi.text;
-    
-    
+    cell.duanzi = duanzi;
+    //[cell.label sizeToFit];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+//    NSLog(@"heightforrow %zd",indexPath.row);
 //    DuanziCell *cell = (DuanziCell *)self.prototypeCell;
 //    Duanzi *duanzi = [self.duanziArray objectAtIndex:indexPath.row];
 //    cell.label.text = duanzi.text;
-//    CGSize s = [duanzi.text calculateSize:CGSizeMake(cell.label.frame.size.width, FLT_MAX) font:cell.label.font];
-//    CGFloat defaultHeight = cell.contentView.frame.size.height;
-//    CGFloat height = s.height > defaultHeight ? s.height : defaultHeight;
-//    NSLog(@"h=%f", height);
-//    return 1  + height;
-    //return 88;
-    NSLog(@"heightforrow %zd",indexPath.row);
-    DuanziCell *cell = (DuanziCell *)self.prototypeCell;
-    Duanzi *duanzi = [self.duanziArray objectAtIndex:indexPath.row];
-    cell.label.text = duanzi.text;
-    CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    NSLog(@"h=%f", size.height + 1);
-
-    return 1  + size.height;
+//    CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+//    NSLog(@"h=%f", size.height + 1);
+//
+//    return 1  + size.height;
+    Duanzi *duanzi = self.duanziArray[indexPath.row];
+    NSLog(@"-----%f",duanzi.cellHeight);
+    return duanzi.cellHeight;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {

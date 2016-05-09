@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BF4548C51CB8120300935942 /* Duanzi.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4548C41CB8120300935942 /* Duanzi.m */; };
 		BF4548CB1CB812F700935942 /* DuanziViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4548CA1CB812F700935942 /* DuanziViewController.m */; };
+		BF668F171CDF8598007E1FB4 /* RequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF668F161CDF8598007E1FB4 /* RequestController.m */; };
 		BF9C11A11CB4F0E300605B37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9C11A01CB4F0E300605B37 /* main.m */; };
 		BF9C11A41CB4F0E300605B37 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9C11A31CB4F0E300605B37 /* AppDelegate.m */; };
 		BF9C11A71CB4F0E300605B37 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9C11A61CB4F0E300605B37 /* ViewController.m */; };
@@ -35,6 +36,8 @@
 		BF4548C41CB8120300935942 /* Duanzi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Duanzi.m; sourceTree = "<group>"; };
 		BF4548C91CB812F700935942 /* DuanziViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DuanziViewController.h; sourceTree = "<group>"; };
 		BF4548CA1CB812F700935942 /* DuanziViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DuanziViewController.m; sourceTree = "<group>"; };
+		BF668F151CDF8598007E1FB4 /* RequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestController.h; sourceTree = "<group>"; };
+		BF668F161CDF8598007E1FB4 /* RequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestController.m; sourceTree = "<group>"; };
 		BF9C119C1CB4F0E300605B37 /* Jiandan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jiandan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9C11A01CB4F0E300605B37 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF9C11A21CB4F0E300605B37 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -127,6 +130,15 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
+		BF668F141CDF857C007E1FB4 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				BF668F151CDF8598007E1FB4 /* RequestController.h */,
+				BF668F161CDF8598007E1FB4 /* RequestController.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		BF9C11931CB4F0E300605B37 = {
 			isa = PBXGroup;
 			children = (
@@ -149,9 +161,8 @@
 		BF9C119E1CB4F0E300605B37 /* Jiandan */ = {
 			isa = PBXGroup;
 			children = (
+				BF668F141CDF857C007E1FB4 /* Utility */,
 				BF9C11B61CB4F3AC00605B37 /* Hpple */,
-				BF9C11A21CB4F0E300605B37 /* AppDelegate.h */,
-				BF9C11A31CB4F0E300605B37 /* AppDelegate.m */,
 				BF4548C21CB811D900935942 /* ViewController */,
 				BF4548C11CB811C900935942 /* Models */,
 				BF4548C01CB811AE00935942 /* Views */,
@@ -168,6 +179,8 @@
 		BF9C119F1CB4F0E300605B37 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BF9C11A21CB4F0E300605B37 /* AppDelegate.h */,
+				BF9C11A31CB4F0E300605B37 /* AppDelegate.m */,
 				BF9C11A01CB4F0E300605B37 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -329,6 +342,7 @@
 				BF9C11BF1CB4F3AC00605B37 /* XPathQuery.m in Sources */,
 				BF9C11C71CB5056600605B37 /* MeiziUrl.m in Sources */,
 				BF4548C51CB8120300935942 /* Duanzi.m in Sources */,
+				BF668F171CDF8598007E1FB4 /* RequestController.m in Sources */,
 				BF4548CB1CB812F700935942 /* DuanziViewController.m in Sources */,
 				BF9C11BE1CB4F3AC00605B37 /* TFHppleElement.m in Sources */,
 			);

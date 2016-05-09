@@ -7,26 +7,38 @@
 //
 
 #import "DuanziCell.h"
+#import "Duanzi.h"
+
+@interface DuanziCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *celltextLabel;
+
+
+
+@end
 
 @implementation DuanziCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.celltextLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 10;
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setDuanzi:(Duanzi *)duanzi {
+    _duanzi = duanzi;
+    
+    self.nameLabel.text = duanzi.name;
+    self.timeLabel.text = duanzi.time;
+    self.celltextLabel.text = duanzi.text;
+    
+    [self layoutIfNeeded];
+    
+    duanzi.cellHeight = CGRectGetMaxY(self.celltextLabel.frame) + 10;
+    
+    
 }
 
 @end

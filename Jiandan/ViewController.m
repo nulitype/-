@@ -19,6 +19,7 @@
 #import "MWPhotoBrowser.h"
 #import "MJExtension.h"
 #import "MJRefresh.h"
+#import "RequestController.h"
 
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -41,9 +42,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    
-//    [self loadMeizi];
-//    [self loadMore];
     [self setupRefresh];
 }
 
@@ -75,9 +73,6 @@
 
 #pragma mark - CollectionView DataSource
 
-//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-//    return 1;
-//}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     self.collectionView.mj_footer.hidden = self.MeiziUrl.count == 0;
@@ -122,15 +117,11 @@
 #pragma mark - 请求方法
 
 - (NSMutableArray *)requestPhotosWithUrl:(NSURL *)url {
-    NSData *MeiziPhotosData = [NSData dataWithContentsOfURL:url];
-
-    NSLog(@"data:---%@",MeiziPhotosData);
-    TFHpple *MeiziParser = [TFHpple hppleWithHTMLData:MeiziPhotosData];
     
     NSString *MeiziUrlQuery = @"//div[@class='text']/p";
-    NSArray *MeiziUrlNode = [MeiziParser searchWithXPathQuery:MeiziUrlQuery];
-    NSLog(@"MeizuUrlNode------%@", MeiziUrlNode);
-    if (MeiziUrlNode.count == 0) {
+
+    NSArray *node = [[RequestController alloc] requestWithURL:url searchPath:MeiziUrlQuery];
+    if (node.count == 0) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请求失败" message:@"你不是被选中的蛋友" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:action];
@@ -141,16 +132,14 @@
     NSMutableArray *MeiziUrlArray = [NSMutableArray array];
     
     
-    for (TFHppleElement *element in MeiziUrlNode) {
+    for (TFHppleElement *element in node) {
         
         for (TFHppleElement *child in element.children) {
             if ([child.tagName isEqualToString:@"a"]) {
                 MeiziUrl *meiziUrl = [[MeiziUrl alloc] init];
                 [MeiziUrlArray addObject:meiziUrl];
-                //meiziUrl.MeiziLargeUrl = [child objectForKey:@"href"];
                 meiziUrl.src = [child objectForKey:@"href"];
-                //[URLArray addObject:LargeSizeUrl];
-                NSLog(@"%@", meiziUrl.src);
+                //NSLog(@"%@", meiziUrl.src);
             }
         }
     }
@@ -160,16 +149,12 @@
 - (void)getCurrentPage {
     
     NSURL *MeiziPhotosUrl = [NSURL URLWithString:@"http://jandan.net/ooxx"];
-    NSData *MeiziPhotosData = [NSData dataWithContentsOfURL:MeiziPhotosUrl];
-    
-    
-    TFHpple *MeiziParser = [TFHpple hppleWithHTMLData:MeiziPhotosData];
     
     NSString *currentPageQueryString = @"//div[@class='comments']/div[@class='cp-pagenavi']/a";
-    NSArray *currentPageNode = [MeiziParser searchWithXPathQuery:currentPageQueryString];
+    NSArray *node = [[RequestController alloc] requestWithURL:MeiziPhotosUrl searchPath:currentPageQueryString];
     
     NSMutableArray *Pages = [NSMutableArray array];
-    for (TFHppleElement *element in currentPageNode) {
+    for (TFHppleElement *element in node) {
         MeiziPages *MeiziPage = [[MeiziPages alloc] init];
         
         MeiziPage.page = [element.content integerValue];
