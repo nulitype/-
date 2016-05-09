@@ -24,7 +24,6 @@
 		BF9C11C71CB5056600605B37 /* MeiziUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9C11C61CB5056600605B37 /* MeiziUrl.m */; };
 		BF9C11CA1CB54B3600605B37 /* MeiziCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9C11C91CB54B3600605B37 /* MeiziCell.m */; };
 		BFF19E271CB8D82700472629 /* DuanziCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF19E261CB8D82700472629 /* DuanziCell.m */; };
-		BFF19E2A1CB8DFC300472629 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF19E291CB8DFC300472629 /* NSString+Extension.m */; };
 		BFF19E2D1CB8F92A00472629 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF19E2C1CB8F92A00472629 /* SettingViewController.m */; };
 		FE82C58020B584FA922E4F25 /* libPods-Jiandan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E73063BBDDAD3B26CC5BEDFC /* libPods-Jiandan.a */; };
 /* End PBXBuildFile section */
@@ -63,8 +62,6 @@
 		BF9C11C91CB54B3600605B37 /* MeiziCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeiziCell.m; sourceTree = "<group>"; };
 		BFF19E251CB8D82700472629 /* DuanziCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DuanziCell.h; sourceTree = "<group>"; };
 		BFF19E261CB8D82700472629 /* DuanziCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DuanziCell.m; sourceTree = "<group>"; };
-		BFF19E281CB8DFC300472629 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
-		BFF19E291CB8DFC300472629 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		BFF19E2B1CB8F92A00472629 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		BFF19E2C1CB8F92A00472629 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		E73063BBDDAD3B26CC5BEDFC /* libPods-Jiandan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jiandan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,8 +167,6 @@
 				BF9C11AD1CB4F0E300605B37 /* LaunchScreen.storyboard */,
 				BF9C11B01CB4F0E300605B37 /* Info.plist */,
 				BF9C119F1CB4F0E300605B37 /* Supporting Files */,
-				BFF19E281CB8DFC300472629 /* NSString+Extension.h */,
-				BFF19E291CB8DFC300472629 /* NSString+Extension.m */,
 			);
 			path = Jiandan;
 			sourceTree = "<group>";
@@ -337,7 +332,6 @@
 				BF9C11A11CB4F0E300605B37 /* main.m in Sources */,
 				BF9C11BD1CB4F3AC00605B37 /* TFHpple.m in Sources */,
 				BF9C11CA1CB54B3600605B37 /* MeiziCell.m in Sources */,
-				BFF19E2A1CB8DFC300472629 /* NSString+Extension.m in Sources */,
 				BF9C11C41CB4F7E100605B37 /* MeiziPages.m in Sources */,
 				BF9C11BF1CB4F3AC00605B37 /* XPathQuery.m in Sources */,
 				BF9C11C71CB5056600605B37 /* MeiziUrl.m in Sources */,
