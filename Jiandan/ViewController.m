@@ -61,6 +61,7 @@
 - (void)loadMore {
     _currentPage--;
     NSString *urlString = [NSString stringWithFormat:@"http://jandan.net/ooxx/page-%ld#comments",(long)_currentPage];
+    NSLog(@"%@", urlString);
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableArray *addArray = [self requestPhotosWithUrl:url];
     
@@ -102,7 +103,7 @@
     
     [self getCurrentPage];
     
-    NSLog(@"%ld",(long)_currentPage);
+    NSLog(@"current page------%ld",(long)_currentPage);
     
     NSURL *MeiziPhotosUrl = [NSURL URLWithString:@"http://jandan.net/ooxx"];
     NSMutableArray *MeiziUrlArray = [self requestPhotosWithUrl:MeiziPhotosUrl];
@@ -150,20 +151,22 @@
     
     NSURL *MeiziPhotosUrl = [NSURL URLWithString:@"http://jandan.net/ooxx"];
     
-    NSString *currentPageQueryString = @"//div[@class='comments']/div[@class='cp-pagenavi']/a";
+    NSString *currentPageQueryString = @"//div[@class='comments']/div[@class='cp-pagenavi']/span";
     NSArray *node = [[RequestController alloc] requestWithURL:MeiziPhotosUrl searchPath:currentPageQueryString];
     
     NSMutableArray *Pages = [NSMutableArray array];
     for (TFHppleElement *element in node) {
-        MeiziPages *MeiziPage = [[MeiziPages alloc] init];
-        
-        MeiziPage.page = [element.content integerValue];
-        [Pages addObject:MeiziPage];
-        
+        //MeiziPages *MeiziPage = [[MeiziPages alloc] init];
+//        MeiziPage.page = [element.content integerValue];
+//        [Pages addObject:MeiziPage];
+        NSString *page = element.content;
+        page = [page substringFromIndex:1];
+        page = [page substringToIndex:page.length - 1];
+        [Pages addObject:page];
+        NSLog(@"get page == %@", page);
     }
     
-    MeiziPages *page = [Pages firstObject];
-    _currentPage = page.page;
+    _currentPage = [[Pages firstObject] integerValue];
     
 
 }
@@ -177,7 +180,10 @@
         [photoArray addObject:photo];
     }
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:photoArray];
-    browser.alwaysShowControls = YES;
+    browser.alwaysShowControls = NO;
+    browser.enableGrid = NO;
+    
+    
     [browser setCurrentPhotoIndex:indexPath.row];
     [self.navigationController pushViewController:browser animated:YES];
     
