@@ -12,7 +12,6 @@
 
 #import "ViewController.h"
 #import "TFHpple.h"
-#import "MeiziPages.h"
 #import "MeiziUrl.h"
 #import "MeiziCell.h"
 #import "MWPhoto.h"
@@ -41,6 +40,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    
     
     [self setupRefresh];
 }
@@ -156,9 +157,6 @@
     
     NSMutableArray *Pages = [NSMutableArray array];
     for (TFHppleElement *element in node) {
-        //MeiziPages *MeiziPage = [[MeiziPages alloc] init];
-//        MeiziPage.page = [element.content integerValue];
-//        [Pages addObject:MeiziPage];
         NSString *page = element.content;
         page = [page substringFromIndex:1];
         page = [page substringToIndex:page.length - 1];
