@@ -76,7 +76,10 @@
                 for (TFHppleElement *ch in child.children) {
                     if ([ch.tagName isEqualToString:@"p"]) {
                         WLpic.text = ch.content;
-                        NSLog(@"text:----%@",WLpic.text);
+                        WLpic.text = [WLpic.text stringByReplacingOccurrencesOfString:@"[查看原图]" withString:@""];
+                        
+                        //NSLog(@"text-----%@", WLpic.text);
+                        
                         for (TFHppleElement *insideChild in ch.children) {
                             if ([insideChild.tagName isEqualToString:@"a"]) {
                                 //NSLog(@"urls---%@", [insideChild objectForKey:@"href"]);
